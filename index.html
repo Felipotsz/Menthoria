@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menthoria</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <meta name="description"
+        content="Plataforma acessível para auxiliar profissionais da educação inclusiva no acompanhamento e desenvolvimento de alunos com deficiência">
+    <meta name="author" content="Menthoria">
+
+    <meta property="og:title" content="Menthoria - Plataforma de Inclusão Educacional">
+    <meta property="og:description"
+        content="Plataforma acessível para auxiliar profissionais da educação inclusiva no acompanhamento e desenvolvimento de alunos com deficiência">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="shortcut icon" href="img/menthoria-fav-icon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="barra-acessibilidade" class="barra-acessibilidade" role="toolbar"
+        aria-label="Ferramentas de acessibilidade">
+        <div class="conteudo-barra">
+            <span class="titulo-barra">Acessibilidade:</span>
+            <button id="alternar-contraste" class="botao-barra" aria-label="Alternar alto contraste">
+                <i data-lucide="contrast"></i>
+                <span>Alto Contraste</span>
+            </button>
+            <button id="aumentar-fonte" class="botao-barra" aria-label="Aumentar tamanho da fonte">
+                <i data-lucide="plus"></i>
+                <span>A+</span>
+            </button>
+            <button id="diminuir-fonte" class="botao-barra" aria-label="Diminuir tamanho da fonte">
+                <i data-lucide="minus"></i>
+                <span>A-</span>
+            </button>
+            <button id="resetar-fonte" class="botao-barra" aria-label="Resetar tamanho da fonte">
+                <i data-lucide="refresh-cw"></i>
+                <span>Reset</span>
+            </button>
+        </div>
+    </div>
+
+    <nav class="barra-navegacao" role="navigation" aria-label="Navegação principal">
+        <div class="container-navegacao">
+            <div class="marca-navegacao">
+                <div class="icone-marca">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <span class="texto-marca">Menthoria</span>
+            </div>
+
+            <div class="links-navegacao">
+                <a href="#funcionalidades" class="link-navegacao">Funcionalidades</a>
+                <a href="#sobre" class="link-navegacao">Sobre</a>
+                <a href="#contato" class="link-navegacao">Contato</a>
+                <a href="login.html" class="botao botao-contorno">Entrar</a>
+                <a href="login.html" class="botao botao-primario">Começar</a>
+            </div>
+
+            <button id="alternar-menu-mobile" class="alternar-menu-mobile" aria-label="Abrir menu de navegação">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <div id="menu-mobile" class="menu-mobile">
+            <a href="#funcionalidades" class="link-navegacao-mobile">Funcionalidades</a>
+            <a href="#sobre" class="link-navegacao-mobile">Sobre</a>
+            <a href="#contato" class="link-navegacao-mobile">Contato</a>
+            <a href="login.html" class="link-navegacao-mobile">Entrar</a>
+            <a href="login.html" class="botao botao-primario chamada-acao-mobile">Começar</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="principal" role="banner">
+            <div class="container-principal">
+                <div class="conteudo-principal">
+                    <div class="texto-principal">
+                        <h1 class="titulo-principal">
+                            Transformando a
+                            <span class="texto-gradiente">Educação Inclusiva</span>
+                        </h1>
+                        <p class="descricao-principal">
+                            Uma plataforma acessível e intuitiva para auxiliar professores e famílias no
+                            acompanhamento do desenvolvimento de alunos com deficiência, promovendo
+                            uma educação verdadeiramente inclusiva.
+                        </p>
+                        <div class="acoes-principal">
+                            <a href="login.html" class="botao botao-primario botao-grande">
+                                Começar Gratuitamente
+                            </a>
+                            <button class="botao botao-contorno botao-grande"
+                                onclick="rolarParaSecao('funcionalidades')">
+                                <i data-lucide="play-circle"></i>
+                                Ver Demonstração
+                            </button>
+                        </div>
+                        <div class="estatisticas-principal">
+                            <div class="estatistica">
+                                <div class="numero-estatistica">500+</div>
+                                <div class="rotulo-estatistica">Professores</div>
+                            </div>
+                            <div class="estatistica">
+                                <div class="numero-estatistica">2000+</div>
+                                <div class="rotulo-estatistica">Alunos</div>
+                            </div>
+                            <div class="estatistica">
+                                <div class="numero-estatistica">50+</div>
+                                <div class="rotulo-estatistica">Escolas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imagem-principal">
+                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="Professor auxiliando criança em atividade educativa inclusiva" class="img-principal">
+                        <div class="sobreposicao-principal"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="funcionalidades" class="funcionalidades">
+            <div class="container">
+                <div class="cabecalho-secao">
+                    <h2 class="titulo-secao">Funcionalidades Principais</h2>
+                    <p class="descricao-secao">
+                        Ferramentas completas para gestão e acompanhamento do desenvolvimento educacional inclusivo
+                    </p>
+                </div>
+
+                <div class="grade-funcionalidades">
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">Gestão de Grupos</h3>
+                        <p class="descricao-funcionalidade">
+                            Organize alunos por turmas e escolas de forma intuitiva,
+                            facilitando o acompanhamento individualizado.
+                        </p>
+                    </div>
+
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="file-text"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">Relatórios Detalhados</h3>
+                        <p class="descricao-funcionalidade">
+                            Crie relatórios de progresso completos com texto, fotos e anexos,
+                            documentando cada conquista do aluno.
+                        </p>
+                    </div>
+
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">Acesso Seguro para Famílias</h3>
+                        <p class="descricao-funcionalidade">
+                            Famílias podem acompanhar o progresso de seus filhos através
+                            de acesso controlado e seguro.
+                        </p>
+                    </div>
+
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="accessibility"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">100% Acessível</h3>
+                        <p class="descricao-funcionalidade">
+                            Interface otimizada para leitores de tela, alto contraste e
+                            navegação por teclado, garantindo acesso universal.
+                        </p>
+                    </div>
+
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="camera"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">Galeria de Momentos</h3>
+                        <p class="descricao-funcionalidade">
+                            Capture e organize fotos das atividades e conquistas dos alunos,
+                            criando um portfólio visual do desenvolvimento.
+                        </p>
+                    </div>
+
+                    <div class="cartao-funcionalidade">
+                        <div class="icone-funcionalidade">
+                            <i data-lucide="download"></i>
+                        </div>
+                        <h3 class="titulo-funcionalidade">Exportação de Dados</h3>
+                        <p class="descricao-funcionalidade">
+                            Exporte relatórios completos em PDF para compartilhar com equipes
+                            multidisciplinares e famílias.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre">
+            <div class="container">
+                <div class="conteudo-sobre">
+                    <div class="texto-sobre">
+                        <h2 class="titulo-secao">Sobre o Menthoria</h2>
+                        <p class="descricao-sobre">
+                            O Menthoria nasceu da necessidade de criar uma ferramenta que realmente
+                            atendesse às demandas dos profissionais da educação inclusiva. Nossa
+                            plataforma foi desenvolvida com foco total na acessibilidade e na
+                            experiência do usuário.
+                        </p>
+
+                        <div class="funcionalidades-sobre">
+                            <div class="funcionalidade-sobre">
+                                <i data-lucide="heart"></i>
+                                <div>
+                                    <h4>Feito com Propósito</h4>
+                                    <p>Desenvolvido especificamente para educação inclusiva</p>
+                                </div>
+                            </div>
+                            <div class="funcionalidade-sobre">
+                                <i data-lucide="users"></i>
+                                <div>
+                                    <h4>Centrado no Usuário</h4>
+                                    <p>Interface intuitiva baseada no feedback de educadores</p>
+                                </div>
+                            </div>
+                            <div class="funcionalidade-sobre">
+                                <i data-lucide="shield"></i>
+                                <div>
+                                    <h4>Seguro e Confiável</h4>
+                                    <p>Proteção total dos dados dos alunos e famílias</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imagem-sobre">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                            alt="Crianças em atividade educativa inclusiva em sala de aula" class="img-sobre">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="chamada-acao">
+            <div class="container">
+                <div class="conteudo-chamada">
+                    <h2 class="titulo-chamada">Pronto para Transformar sua Prática Educativa?</h2>
+                    <p class="descricao-chamada">
+                        Junte-se a centenas de educadores que já estão usando o Menthoria
+                        para criar experiências de aprendizagem mais inclusivas e eficazes.
+                    </p>
+                    <div class="acoes-chamada">
+                        <a href="login.html" class="botao botao-primario botao-grande">
+                            Começar Gratuitamente
+                        </a>
+                        <a href="#contato" class="botao botao-contorno botao-grande">
+                            Falar com Especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato" class="rodape">
+        <div class="container">
+            <div class="conteudo-rodape">
+                <div class="marca-rodape">
+                    <div class="icone-marca">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                    <span class="texto-marca">Menthoria</span>
+                    <p class="descricao-rodape">
+                        Transformando a educação inclusiva através da tecnologia acessível.
+                    </p>
+                </div>
+
+                <div class="links-rodape">
+                    <div class="secao-rodape">
+                        <h4 class="titulo-rodape">Produto</h4>
+                        <a href="#funcionalidades" class="link-rodape">Funcionalidades</a>
+                        <a href="#" class="link-rodape">Preços</a>
+                        <a href="#" class="link-rodape">Suporte</a>
+                    </div>
+
+                    <div class="secao-rodape">
+                        <h4 class="titulo-rodape">Empresa</h4>
+                        <a href="#sobre" class="link-rodape">Sobre</a>
+                        <a href="#" class="link-rodape">Blog</a>
+                        <a href="#" class="link-rodape">Carreiras</a>
+                    </div>
+
+                    <div class="secao-rodape">
+                        <h4 class="titulo-rodape">Contato</h4>
+                        <a href="mailto:contato@menthoria.com" class="link-rodape">contato@menthoria.com</a>
+                        <a href="tel:+5511999999999" class="link-rodape">(11) 99999-9999</a>
+                        <a href="#" class="link-rodape">Whatsapp</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rodape-inferior">
+                <p>&copy; 2024 Menthoria. Todos os direitos reservados.</p>
+                <div class="legal-rodape">
+                    <a href="#" class="link-rodape">Privacidade</a>
+                    <a href="#" class="link-rodape">Termos</a>
+                    <a href="#" class="link-rodape">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

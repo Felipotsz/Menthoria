@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Menthoria</title>
+    <meta name="description"
+        content="Faça login na plataforma Menthoria para acessar suas ferramentas de educação inclusiva.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div id="accessibility-toolbar" class="accessibility-toolbar" role="toolbar"
+        aria-label="Ferramentas de acessibilidade">
+        <div class="toolbar-content">
+            <span class="toolbar-title">Acessibilidade:</span>
+            <button id="alternar-contraste" class="toolbar-btn" aria-label="Alternar alto contraste">
+                <i data-lucide="contrast"></i>
+                <span>Alto Contraste</span>
+            </button>
+            <button id="aumentar-fonte" class="toolbar-btn" aria-label="Aumentar tamanho da fonte">
+                <i data-lucide="plus"></i>
+                <span>A+</span>
+            </button>
+            <button id="diminuir-fonte" class="toolbar-btn" aria-label="Diminuir tamanho da fonte">
+                <i data-lucide="minus"></i>
+                <span>A-</span>
+            </button>
+            <button id="resetar-fonte" class="toolbar-btn" aria-label="Resetar tamanho da fonte">
+                <i data-lucide="refresh-cw"></i>
+                <span>Reset</span>
+            </button>
+        </div>
+    </div>
+
+    <main class="login-page">
+        <nav class="login-nav">
+            <a href="index.html" class="nav-brand">
+                <div class="brand-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <span class="brand-text">Menthoria</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <i data-lucide="arrow-left"></i>
+                Voltar ao início
+            </a>
+        </nav>
+
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-form-container">
+                    <div class="login-header">
+                        <h1>Bem-vindo de volta!</h1>
+                        <p>Entre na sua conta para continuar</p>
+                    </div>
+
+                    <form id="login-form" class="login-form" novalidate>
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com"
+                                required aria-describedby="email-error">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Senha</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="password" class="form-input"
+                                    placeholder="••••••••" required aria-describedby="password-error">
+                                <button type="button" id="toggle-password" class="password-toggle"
+                                    aria-label="Mostrar senha">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkbox-custom"></span>
+                                Lembrar de mim
+                            </label>
+                            <a href="#" class="forgot-password">Esqueci minha senha</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large btn-full">
+                            <span class="btn-text">Entrar</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i data-lucide="loader-2" class="spin"></i>
+                                Entrando...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+
+                    <div class="signup-link">
+                        <p>Não tem uma conta? <a href="#" onclick="showSignupForm()">Cadastre-se</a></p>
+                    </div>
+                </div>
+
+                <div id="signup-form-container" class="login-form-container" style="display: none;">
+                    <div class="login-header">
+                        <h1>Criar Conta</h1>
+                        <p>Escolha seu tipo de usuário</p>
+                    </div>
+
+                    <div class="user-type-selection">
+                        <button type="button" class="user-type-btn active" data-type="professor">
+                            <i data-lucide="graduation-cap"></i>
+                            <div>
+                                <h3>Professor/Agente</h3>
+                                <p>Gerenciar alunos e criar relatórios</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="user-type-btn" data-type="family">
+                            <i data-lucide="heart"></i>
+                            <div>
+                                <h3>Família</h3>
+                                <p>Acompanhar o progresso do aluno</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <form id="signup-form" class="login-form" novalidate>
+                        <div class="form-group">
+                            <label for="signup-name" class="form-label">Nome Completo</label>
+                            <input type="text" id="signup-name" name="name" class="form-input"
+                                placeholder="Seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup-email" class="form-label">E-mail</label>
+                            <input type="email" id="signup-email" name="email" class="form-input"
+                                placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup-password" class="form-label">Senha</label>
+                            <div class="password-input-container">
+                                <input type="password" id="signup-password" name="password" class="form-input"
+                                    placeholder="••••••••" required minlength="8">
+                                <button type="button" id="toggle-signup-password" class="password-toggle"
+                                    aria-label="Mostrar senha">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text" id="password-strength">Força da senha</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="access-code-group" style="display: none;">
+                            <label for="access-code" class="form-label">Código de Acesso</label>
+                            <input type="text" id="access-code" name="accessCode" class="form-input"
+                                placeholder="Código fornecido pelo professor">
+                            <div class="form-help">
+                                Código fornecido pelo professor para vincular ao aluno
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkbox-custom"></span>
+                                Concordo com os <a href="#" target="_blank">Termos de Uso</a> e <a href="#"
+                                    target="_blank">Política de Privacidade</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large btn-full">
+                            <span class="btn-text">Criar Conta</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i data-lucide="loader-2" class="spin"></i>
+                                Criando...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+
+                    <div class="signup-link">
+                        <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Entrar</a></p>
+                    </div>
+                </div>
+
+                <div class="login-info">
+                    <div class="info-content">
+                        <div class="info-header">
+                            <i data-lucide="heart" class="info-icon"></i>
+                            <h2>Educação Inclusiva que Transforma</h2>
+                        </div>
+
+                        <div class="info-features">
+                            <div class="info-feature">
+                                <i data-lucide="users"></i>
+                                <div>
+                                    <h4>Gestão Simplificada</h4>
+                                    <p>Organize grupos e acompanhe o desenvolvimento de cada aluno</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <i data-lucide="shield-check"></i>
+                                <div>
+                                    <h4>Segurança Total</h4>
+                                    <p>Dados protegidos com criptografia e acesso controlado</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <i data-lucide="accessibility"></i>
+                                <div>
+                                    <h4>100% Acessível</h4>
+                                    <p>Interface otimizada para todos os usuários</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-stats">
+                            <div class="stat">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Professores</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">2000+</div>
+                                <div class="stat-label">Alunos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Escolas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>

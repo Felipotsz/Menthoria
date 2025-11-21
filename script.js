@@ -1,356 +1,470 @@
-// Elementos do DOM
-const alternarContraste = document.getElementById('alternar-contraste');
-const aumentarFonte = document.getElementById('aumentar-fonte');
-const diminuirFonte = document.getElementById('diminuir-fonte');
-const resetarFonte = document.getElementById('resetar-fonte');
-const alternarMenuMobile = document.getElementById('alternar-menu-mobile');
-const menuMobile = document.getElementById('menu-mobile');
+// menthoria-script.js - Versão reorganizada e padronizada
 
-// Inicializa os ícones Lucide
+// ===== INICIALIZAÇÃO GERAL =====
 document.addEventListener('DOMContentLoaded', function () {
-    lucide.createIcons();
+    initializeThemeSystem();
+    initializeNavigation();
+    initializeSmoothScroll();
+    initializeFormHandlers();
+    initializeAnimations();
+    initializeEventHandlers();
+    initializeAccessibilityAside();
+    loadDynamicData();
 });
 
-// Funcionalidades de Acessibilidade
-let tamanhoFonteBase = 16; // Tamanho base da fonte
-let altoContrasteAtivo = false;
+// ===== SISTEMA DE TEMAS =====
+function initializeThemeSystem() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
 
-// Alterna o Alto Contraste
-function alternarAltoContraste() {
-    altoContrasteAtivo = !altoContrasteAtivo;
-    document.body.classList.toggle('alto-contraste', altoContrasteAtivo);
-    localStorage.setItem('altoContrasteAtivo', altoContrasteAtivo);
+    // Carregar preferências salvas
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedColorblind = localStorage.getItem('colorblind') === 'true';
 
-    // Atualiza o texto do botão
-    const span = alternarContraste.querySelector('span');
-    span.textContent = altoContrasteAtivo ? 'Contraste Normal' : 'Alto Contraste';
+    // Aplicar tema inicial
+    applyTheme(savedTheme, savedColorblind);
+    updateThemeIcon(themeIcon, savedTheme);
+    updateColorblindButton(savedColorblind);
 
-    // Anuncia a mudança para leitores de tela
-    anunciarParaLeitorDeTela(
-        altoContrasteAtivo ? 'Alto contraste ativado' : 'Alto contraste desativado'
-    );
+    // Alternar tema claro/escuro
+    themeToggle.addEventListener('click', function () {
+        const currentTheme = document.documentElement.getAttribute('data-theme-mode');
+        const isColorblind = document.documentElement.getAttribute('data-theme') === 'colorblind-friendly';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        applyTheme(newTheme, isColorblind);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(themeIcon, newTheme);
+    });
 }
 
-// Controles de Tamanho da Fonte
-function aumentarTamanhoFonte() {
-    if (tamanhoFonteBase < 24) {
-        tamanhoFonteBase += 2;
-        atualizarTamanhoFonte();
-        anunciarParaLeitorDeTela(`Fonte aumentada para ${tamanhoFonteBase}px`);
-    }
+function applyTheme(themeMode, isColorblind) {
+    document.documentElement.setAttribute('data-theme', isColorblind ? 'colorblind-friendly' : 'default');
+    document.documentElement.setAttribute('data-theme-mode', themeMode);
 }
 
-function diminuirTamanhoFonte() {
-    if (tamanhoFonteBase > 12) {
-        tamanhoFonteBase -= 2;
-        atualizarTamanhoFonte();
-        anunciarParaLeitorDeTela(`Fonte diminuída para ${tamanhoFonteBase}px`);
-    }
-}
-
-function resetarTamanhoFonte() {
-    tamanhoFonteBase = 16;
-    atualizarTamanhoFonte();
-    anunciarParaLeitorDeTela('Fonte resetada para tamanho padrão');
-}
-
-function atualizarTamanhoFonte() {
-    document.documentElement.style.setProperty('--tamanho-da-fonte-base', tamanhoFonteBase + 'px');
-    localStorage.setItem('tamanhoFonte', tamanhoFonteBase);
-}
-
-// Anúncios para Leitores de Tela
-function anunciarParaLeitorDeTela(mensagem) {
-    const anuncio = document.createElement('div');
-    anuncio.setAttribute('aria-live', 'polite');
-    anuncio.setAttribute('aria-atomic', 'true');
-    anuncio.className = 'sr-only';
-    anuncio.style.cssText = `
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-    `;
-
-    document.body.appendChild(anuncio);
-    anuncio.textContent = mensagem;
-
-    setTimeout(() => {
-        document.body.removeChild(anuncio);
-    }, 1000);
-}
-
-// Alterna o Menu Mobile
-function alternarMenuMobile() {
-    const estaAberto = menuMobile.classList.contains('active');
-    menuMobile.classList.toggle('active');
-
-    // Atualiza atributos ARIA
-    alternarMenuMobile.setAttribute('aria-expanded', !estaAberto);
-    alternarMenuMobile.setAttribute('aria-label',
-        estaAberto ? 'Abrir menu de navegação' : 'Fechar menu de navegação'
-    );
-
-    // Altera o ícone
-    const icone = alternarMenuMobile.querySelector('i');
-    if (estaAberto) {
-        icone.setAttribute('data-lucide', 'menu');
+function updateThemeIcon(icon, themeMode) {
+    if (themeMode === 'dark') {
+        icon.className = 'fas fa-sun';
     } else {
-        icone.setAttribute('data-lucide', 'x');
+        icon.className = 'fas fa-moon';
     }
-
-    // Recria os ícones
-    lucide.createIcons();
 }
 
-// Função para Rolagem Suave
-function rolarParaSecao(sectionId) {
-    const secao = document.getElementById(sectionId);
-    if (secao) {
-        secao.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+function updateColorblindButton(isActive) {
+    const button = document.getElementById('alternar-daltonico');
+    if (button) {
+        if (isActive) {
+            button.classList.add('ativo');
+            button.querySelector('span').textContent = 'Modo Normal';
+        } else {
+            button.classList.remove('ativo');
+            button.querySelector('span').textContent = 'Modo Daltônico';
+        }
+    }
+}
+
+// ===== NAVEGAÇÃO =====
+function initializeNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            const icon = navToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
         });
 
-        // Foca a seção para acessibilidade
-        secao.setAttribute('tabindex', '-1');
-        secao.focus();
-
-        // Remove o tabindex após o foco
-        setTimeout(() => {
-            secao.removeAttribute('tabindex');
-        }, 100);
-    }
-}
-
-// Lida com cliques em links para rolagem suave
-function lidarComCliqueDoLink(evento) {
-    const href = evento.target.getAttribute('href');
-
-    if (href && href.startsWith('#')) {
-        evento.preventDefault();
-        const sectionId = href.substring(1);
-        rolarParaSecao(sectionId);
-
-        // Fecha o menu móvel se estiver aberto
-        if (menuMobile.classList.contains('active')) {
-            alternarMenuMobile();
-        }
-    }
-}
-
-// Navegação por Teclado
-function lidarComNavegacaoDoTeclado(evento) {
-    // Tecla ESC fecha o menu móvel
-    if (evento.key === 'Escape' && menuMobile.classList.contains('active')) {
-        alternarMenuMobile();
-        alternarMenuMobile.focus();
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navMenu.classList.remove('active');
+                navToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
     }
 
-    // Teclas de seta para a barra de ferramentas de acessibilidade
-    if (evento.target.classList.contains('botao-barra')) {
-        const botoes = document.querySelectorAll('.botao-barra');
-        const indiceAtual = Array.from(botoes).indexOf(evento.target);
-
-        let proximoIndice;
-        if (evento.key === 'ArrowLeft' || evento.key === 'ArrowUp') {
-            proximoIndice = indiceAtual > 0 ? indiceAtual - 1 : botoes.length - 1;
-        } else if (evento.key === 'ArrowRight' || evento.key === 'ArrowDown') {
-            proximoIndice = indiceAtual < botoes.length - 1 ? indiceAtual + 1 : 0;
-        }
-
-        if (proximoIndice !== undefined) {
-            evento.preventDefault();
-            botoes[proximoIndice].focus();
-        }
-    }
-}
-
-// Validação de Formulário (para futura página de login)
-function validarEmail(email) {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
-}
-
-function mostrarErroDoFormulario(input, mensagem) {
-    const elementoErro = input.parentNode.querySelector('.mensagem-de-erro') ||
-        document.createElement('div');
-    elementoErro.className = 'mensagem-de-erro';
-    elementoErro.textContent = mensagem;
-    elementoErro.style.cssText = `
-        color: var(--destrutivo);
-        font-size: var(--tamanho-da-fonte-sm);
-        margin-top: var(--espacamento-1);
-    `;
-
-    if (!input.parentNode.querySelector('.mensagem-de-erro')) {
-        input.parentNode.appendChild(elementoErro);
-    }
-
-    input.setAttribute('aria-invalid', 'true');
-    input.setAttribute('aria-describedby', elementoErro.id || 'erro-' + input.name);
-}
-
-function limparErroDoFormulario(input) {
-    const elementoErro = input.parentNode.querySelector('.mensagem-de-erro');
-    if (elementoErro) {
-        elementoErro.remove();
-    }
-
-    input.removeAttribute('aria-invalid');
-    input.removeAttribute('aria-describedby');
-}
-
-// Carrega Preferências Salvas
-function carregarPreferencias() {
-    // Carrega a preferência de alto contraste
-    const contrasteSalvo = localStorage.getItem('altoContrasteAtivo');
-    if (contrasteSalvo === 'true') {
-        alternarAltoContraste();
-    }
-
-    // Carrega a preferência de tamanho da fonte
-    const tamanhoFonteSalvo = localStorage.getItem('tamanhoFonte');
-    if (tamanhoFonteSalvo) {
-        tamanhoFonteBase = parseInt(tamanhoFonteSalvo);
-        atualizarTamanhoFonte();
-    }
-}
-
-// Inicializa os Listeners de Eventos
-function inicializarEventListeners() {
-    // Barra de ferramentas de acessibilidade
-    if (alternarContraste) {
-        alternarContraste.addEventListener('click', alternarAltoContraste);
-    }
-
-    if (aumentarFonte) {
-        aumentarFonte.addEventListener('click', aumentarTamanhoFonte);
-    }
-
-    if (diminuirFonte) {
-        diminuirFonte.addEventListener('click', diminuirTamanhoFonte);
-    }
-
-    if (resetarFonte) {
-        resetarFonte.addEventListener('click', resetarTamanhoFonte);
-    }
-
-    // Menu móvel
-    if (alternarMenuMobile) {
-        alternarMenuMobile.addEventListener('click', alternarMenuMobile);
-    }
-
-    // Rolagem suave para todos os links âncora
-    document.addEventListener('click', function (evento) {
-        if (evento.target.tagName === 'A' || evento.target.closest('a')) {
-            const link = evento.target.tagName === 'A' ? evento.target : evento.target.closest('a');
-            lidarComCliqueDoLink({ target: link, preventDefault: () => evento.preventDefault() });
-        }
-    });
-
-    // Navegação por teclado
-    document.addEventListener('keydown', lidarComNavegacaoDoTeclado);
-
-    // Fecha o menu móvel ao clicar fora
-    document.addEventListener('click', function (evento) {
-        if (menuMobile && menuMobile.classList.contains('active') &&
-            !menuMobile.contains(evento.target) &&
-            !alternarMenuMobile.contains(evento.target)) {
-            alternarMenuMobile();
-        }
-    });
-
-    // Lida com o redimensionamento da janela
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 768 && menuMobile && menuMobile.classList.contains('active')) {
-            alternarMenuMobile();
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
     });
 }
 
-// Otimização de Performance - Intersection Observer para animações
-function inicializarIntersectionObserver() {
-    const opcoesObserver = {
+// ===== SCROLL SUAVE =====
+function initializeSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ===== MANIPULAÇÃO DE FORMULÁRIOS =====
+function initializeFormHandlers() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        if (button.textContent.includes('Saiba Mais') ||
+            button.textContent.includes('Começar') ||
+            button.textContent.includes('Ver Demonstração')) {
+
+            button.addEventListener('click', function () {
+                const action = this.textContent.trim();
+                showNotification(`Ação "${action}" registrada com sucesso!`, 'success');
+            });
+        }
+    });
+}
+
+// ===== ANIMAÇÕES =====
+function initializeAnimations() {
+    const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function (entradas) {
-        entradas.forEach(entrada => {
-            if (entrada.isIntersecting) {
-                entrada.target.classList.add('animate-in');
-                observer.unobserve(entrada.target);
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, opcoesObserver);
+    }, observerOptions);
 
-    // Observa os elementos que devem ser animados
-    const elementosAnimados = document.querySelectorAll('.cartao-funcionalidade, .funcionalidade-sobre');
-    elementosAnimados.forEach(el => observer.observe(el));
-}
-
-// Tratamento de Erros
-window.addEventListener('error', function (evento) {
-    console.error('Erro de JavaScript:', evento.error);
-    // Em produção, você pode querer enviar isso para um serviço de rastreamento de erros
-});
-
-// Análise de Carregamento da Página (placeholder)
-function rastrearCarregamentoPagina() {
-    // Placeholder para rastreamento de análises
-    console.log('Página carregada:', {
-        url: window.location.href,
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent
+    const animatedElements = document.querySelectorAll('.card, .section-header, .hero-content');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
 }
 
-// Inicializa a Aplicação
-document.addEventListener('DOMContentLoaded', function () {
-    carregarPreferencias();
-    inicializarEventListeners();
-    inicializarIntersectionObserver();
-    rastrearCarregamentoPagina();
+// ===== MANIPULAÇÃO DE EVENTOS =====
+function initializeEventHandlers() {
+    const cards = document.querySelectorAll('.card-hover');
+    cards.forEach(card => {
+        card.addEventListener('click', function (e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                return;
+            }
+        });
+    });
+}
 
-    // Inicializa os ícones Lucide
-    lucide.createIcons();
+// ===== ASIDE DE ACESSIBILIDADE =====
+function initializeAccessibilityAside() {
+    const toggleBtn = document.getElementById('toggle-acessibilidade');
+    const aside = document.getElementById('aside-acessibilidade');
+    const closeBtn = document.getElementById('fechar-acessibilidade');
+    const overlay = document.createElement('div');
+    
+    overlay.id = 'overlay-acessibilidade';
+    overlay.className = 'overlay-aside';
+    document.body.appendChild(overlay);
 
-    // Adiciona o link para pular para acessibilidade
-    const linkPular = document.createElement('a');
-    linkPular.href = '#main';
-    linkPular.className = 'link-pular';
-    linkPular.textContent = 'Pular para o conteúdo principal';
-    linkPular.addEventListener('click', function (e) {
-        e.preventDefault();
-        const main = document.querySelector('main');
-        if (main) {
-            main.setAttribute('tabindex', '-1');
-            main.focus();
-            setTimeout(() => main.removeAttribute('tabindex'), 100);
+    // Abrir aside
+    toggleBtn.addEventListener('click', function() {
+        aside.setAttribute('aria-hidden', 'false');
+        overlay.classList.add('ativo');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Fechar aside
+    function fecharAside() {
+        aside.setAttribute('aria-hidden', 'true');
+        overlay.classList.remove('ativo');
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', fecharAside);
+    overlay.addEventListener('click', fecharAside);
+
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && aside.getAttribute('aria-hidden') === 'false') {
+            fecharAside();
         }
     });
-    document.body.insertBefore(linkPular, document.body.firstChild);
 
-    // Adiciona o marco principal
-    const main = document.querySelector('main');
-    if (main) {
-        main.id = 'main';
+    // Configurações de acessibilidade
+    const aumentarFonte = document.getElementById('aumentar-fonte');
+    const diminuirFonte = document.getElementById('diminuir-fonte');
+    const resetarFonte = document.getElementById('resetar-fonte');
+    const alternarDaltonico = document.getElementById('alternar-daltonico');
+    const ativarLeitor = document.getElementById('ativar-leitor');
+    const atalhosTeclado = document.getElementById('atalhos-teclado');
+
+    // Controle de fonte
+    aumentarFonte.addEventListener('click', function() {
+        alterarTamanhoFonte(1);
+        highlightButton(this);
+    });
+
+    diminuirFonte.addEventListener('click', function() {
+        alterarTamanhoFonte(-1);
+        highlightButton(this);
+    });
+
+    resetarFonte.addEventListener('click', function() {
+        document.documentElement.style.fontSize = '';
+        highlightButton(this);
+        showNotification('Tamanho da fonte resetado', 'success');
+    });
+
+    // Tema daltônico
+    alternarDaltonico.addEventListener('click', function() {
+        const isColorblind = document.documentElement.getAttribute('data-theme') === 'colorblind-friendly';
+        const currentMode = document.documentElement.getAttribute('data-theme-mode');
+        
+        applyTheme(currentMode, !isColorblind);
+        localStorage.setItem('colorblind', (!isColorblind).toString());
+        
+        updateColorblindButton(!isColorblind);
+        highlightButton(this, !isColorblind);
+        
+        if (!isColorblind) {
+            showNotification('Modo daltônico ativado', 'success');
+        } else {
+            showNotification('Modo daltônico desativado', 'info');
+        }
+    });
+
+    // Leitor de tela (simulação)
+    ativarLeitor.addEventListener('click', function() {
+        highlightButton(this);
+        showNotification('Recurso de leitor de tela em desenvolvimento', 'info');
+    });
+
+    // Atalhos de teclado
+    atalhosTeclado.addEventListener('click', function() {
+        highlightButton(this);
+        mostrarAtalhosTeclado();
+    });
+
+    // Atalhos de teclado globais
+    document.addEventListener('keydown', function(e) {
+        // Ctrl + Alt + A para abrir acessibilidade
+        if (e.ctrlKey && e.altKey && e.key === 'a') {
+            e.preventDefault();
+            toggleBtn.click();
+        }
+        
+        // Ctrl + Alt + D para modo daltônico
+        if (e.ctrlKey && e.altKey && e.key === 'd') {
+            e.preventDefault();
+            alternarDaltonico.click();
+        }
+        
+        // Ctrl + Alt + T para alternar tema claro/escuro
+        if (e.ctrlKey && e.altKey && e.key === 't') {
+            e.preventDefault();
+            document.getElementById('theme-toggle').click();
+        }
+    });
+}
+
+// ===== FUNÇÕES DE ACESSIBILIDADE =====
+function highlightButton(button, manterAtivo = false) {
+    const grupo = button.closest('.acessibilidade-grupo');
+    if (grupo) {
+        const botoes = grupo.querySelectorAll('.botao-acessibilidade');
+        botoes.forEach(btn => {
+            if (btn !== button || !manterAtivo) {
+                btn.classList.remove('ativo');
+            }
+        });
     }
-});
+    
+    if (manterAtivo) {
+        button.classList.add('ativo');
+    } else {
+        button.classList.add('ativo');
+        setTimeout(() => {
+            if (button.parentNode) {
+                button.classList.remove('ativo');
+            }
+        }, 1000);
+    }
+}
 
-// Exporta funções para uso potencial em outros scripts
-window.MenthoriaApp = {
-    rolarParaSecao,
-    alternarAltoContraste,
-    aumentarTamanhoFonte,
-    diminuirTamanhoFonte,
-    resetarTamanhoFonte,
-    validarEmail,
-    anunciarParaLeitorDeTela
-};
+function alterarTamanhoFonte(direcao) {
+    const html = document.documentElement;
+    const tamanhoAtual = parseFloat(getComputedStyle(html).fontSize);
+    const novoValor = tamanhoAtual + (direcao * 2);
+    
+    if (novoValor >= 12 && novoValor <= 24) {
+        html.style.fontSize = novoValor + 'px';
+        const acao = direcao > 0 ? 'aumentado' : 'diminuído';
+        showNotification(`Tamanho da fonte ${acao}`, 'success');
+    } else {
+        showNotification('Tamanho limite atingido', 'warning');
+    }
+}
+
+function mostrarAtalhosTeclado() {
+    const atalhosHTML = `
+        <div class="atalhos-lista">
+            <h4>Atalhos de Teclado</h4>
+            <div class="atalho-item">
+                <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd>
+                <span>Abrir menu de acessibilidade</span>
+            </div>
+            <div class="atalho-item">
+                <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>D</kbd>
+                <span>Alternar modo daltônico</span>
+            </div>
+            <div class="atalho-item">
+                <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>
+                <span>Alternar tema claro/escuro</span>
+            </div>
+            <div class="atalho-item">
+                <kbd>Tab</kbd>
+                <span>Navegar entre elementos</span>
+            </div>
+            <div class="atalho-item">
+                <kbd>Enter</kbd>
+                <span>Ativar elemento selecionado</span>
+            </div>
+            <div class="atalho-item">
+                <kbd>Esc</kbd>
+                <span>Fechar menus</span>
+            </div>
+        </div>
+    `;
+    
+    showNotification(atalhosHTML, 'info', 10000);
+}
+
+// ===== SISTEMA DE NOTIFICAÇÕES =====
+function showNotification(message, type = 'info', duration = 5000) {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    
+    if (message.includes('<')) {
+        notification.innerHTML = message;
+    } else {
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${getNotificationIcon(type)}"></i>
+                <span>${message}</span>
+            </div>
+            <button class="notification-close">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+    }
+
+    notification.style.cssText = `
+        position: fixed;
+        top: 120px;
+        right: 20px;
+        background: hsl(var(--card));
+        color: hsl(var(--card-foreground));
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        border-left: 4px solid ${getNotificationColor(type)};
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        max-width: 400px;
+        z-index: 10000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+    `;
+
+    if (message.includes('atalhos-lista')) {
+        notification.style.maxWidth = '500px';
+        notification.style.padding = '1.5rem';
+    }
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+
+    const closeBtn = notification.querySelector('.notification-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            closeNotification(notification);
+        });
+    }
+
+    setTimeout(() => {
+        if (notification.parentNode) {
+            closeNotification(notification);
+        }
+    }, duration);
+}
+
+function closeNotification(notification) {
+    notification.style.transform = 'translateX(400px)';
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 300);
+}
+
+function getNotificationIcon(type) {
+    const icons = {
+        success: 'check-circle',
+        error: 'exclamation-circle',
+        warning: 'exclamation-triangle',
+        info: 'info-circle'
+    };
+    return icons[type] || 'info-circle';
+}
+
+function getNotificationColor(type) {
+    const colors = {
+        success: '#4ECDC4',
+        error: '#FF6B6B',
+        warning: '#FFD93D',
+        info: 'hsl(var(--primary))'
+    };
+    return colors[type] || 'hsl(var(--primary))';
+}
+
+// ===== FUNÇÕES UTILITÁRIAS =====
+function rolarParaSecao(secaoId) {
+    const secao = document.getElementById(secaoId);
+    if (secao) {
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const targetPosition = secao.offsetTop - headerHeight;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// ===== INICIALIZAÇÃO DE DADOS =====
+function loadDynamicData() {
+    setTimeout(() => {
+        console.log('Sistema Menthoria carregado com sucesso!');
+    }, 1000);
+}

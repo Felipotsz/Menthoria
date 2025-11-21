@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default" data-theme-mode="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menthoria - Educação Inclusiva</title>
+    <meta name="description"
+        content="Faça login na plataforma Menthoria para acessar suas ferramentas de educação inclusiva.">
+    <meta name="author" content="Menthoria">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&family=Comfortaa:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Home/style.css">
+    <link rel="stylesheet" href="Login/login.css">
+
+    <!-- JavaScript -->
+    <script src="Home/script.js" defer></script>
+    <script src="Login/login.js" defer></script>
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/menthoria-fav-icon.png">
+</head>
+
+<body>
+    <!-- Botão flutuante para acessibilidade -->
+    <button id="toggle-acessibilidade" class="acessibilidade-toggle" aria-label="Abrir menu de acessibilidade">
+        <i class="fas fa-universal-access"></i>
+    </button>
+
+    <!-- Aside de Acessibilidade -->
+    <aside id="aside-acessibilidade" class="aside-acessibilidade" aria-hidden="true">
+        <div class="aside-header">
+            <h3>Configurações de Acessibilidade</h3>
+            <button id="fechar-acessibilidade" class="fechar-aside" aria-label="Fechar menu de acessibilidade">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="aside-content">
+            <div class="acessibilidade-grupo">
+                <h4>Tamanho da Fonte</h4>
+                <div class="botoes-fonte">
+                    <button id="aumentar-fonte" class="botao-acessibilidade" aria-label="Aumentar tamanho da fonte">
+                        <i class="fas fa-plus"></i>
+                        <span>A+</span>
+                    </button>
+                    <button id="diminuir-fonte" class="botao-acessibilidade" aria-label="Diminuir tamanho da fonte">
+                        <i class="fas fa-minus"></i>
+                        <span>A-</span>
+                    </button>
+                    <button id="resetar-fonte" class="botao-acessibilidade" aria-label="Resetar tamanho da fonte">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Contraste</h4>
+                <button id="alternar-contraste" class="botao-acessibilidade" aria-label="Alternar alto contraste">
+                    <i class="fas fa-adjust"></i>
+                    <span>Alto Contraste</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Tema</h4>
+                <button id="alternar-daltonico" class="botao-acessibilidade" aria-label="Alternar tema para daltônicos">
+                    <i class="fas fa-eye"></i>
+                    <span>Modo Daltônico</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Leitura</h4>
+                <button id="ativar-leitor" class="botao-acessibilidade" aria-label="Ativar leitor de tela">
+                    <i class="fas fa-assistive-listening-systems"></i>
+                    <span>Leitor de Tela</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Navegação</h4>
+                <button id="atalhos-teclado" class="botao-acessibilidade" aria-label="Ver atalhos de teclado">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Atalhos</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div id="overlay-acessibilidade" class="overlay-aside"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>Menthoria</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html#funcionalidades" class="nav-link">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#sobre" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contato" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <a href="login.html" class="btn-primary">
+                        <span>Entrar</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-page">
+        <div class="login-container container">
+            <div class="login-content">
+                <div class="login-form-container card">
+                    <div class="login-header">
+                        <h1 class="section-title">Bem-vindo de volta!</h1>
+                        <p class="section-description">Entre na sua conta para continuar</p>
+                    </div>
+
+                    <form id="login-form" class="login-form" novalidate>
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com"
+                                required aria-describedby="email-error">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Senha</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="password" class="form-input"
+                                    placeholder="••••••••" required aria-describedby="password-error">
+                                <button type="button" id="toggle-password" class="password-toggle"
+                                    aria-label="Mostrar senha">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkbox-custom"></span>
+                                Lembrar de mim
+                            </label>
+                            <a href="#" class="forgot-password">Esqueci minha senha</a>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full">
+                            <span class="btn-text">Entrar</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Entrando...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+
+                    <div class="signup-link">
+                        <p>Não tem uma conta? <a href="#" id="show-signup">Cadastre-se</a></p>
+                    </div>
+                </div>
+
+                <div id="signup-form-container" class="login-form-container card" style="display: none;">
+                    <div class="login-header">
+                        <h1 class="section-title">Criar Conta</h1>
+                        <p class="section-description">Escolha seu tipo de usuário</p>
+                    </div>
+
+                    <div class="user-type-selection">
+                        <button type="button" class="user-type-btn active" data-type="professor">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h3>Professor/Agente</h3>
+                                <p>Gerenciar alunos e criar relatórios</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="user-type-btn" data-type="family">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h3>Família</h3>
+                                <p>Acompanhar o progresso do aluno</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <form id="signup-form" class="login-form" novalidate>
+                        <div class="form-group">
+                            <label for="signup-name" class="form-label">Nome Completo</label>
+                            <input type="text" id="signup-name" name="name" class="form-input"
+                                placeholder="Seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup-email" class="form-label">E-mail</label>
+                            <input type="email" id="signup-email" name="email" class="form-input"
+                                placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup-password" class="form-label">Senha</label>
+                            <div class="password-input-container">
+                                <input type="password" id="signup-password" name="password" class="form-input"
+                                    placeholder="••••••••" required minlength="8">
+                                <button type="button" id="toggle-signup-password" class="password-toggle"
+                                    aria-label="Mostrar senha">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text" id="password-strength">Força da senha</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="access-code-group" style="display: none;">
+                            <label for="access-code" class="form-label">Código de Acesso</label>
+                            <input type="text" id="access-code" name="accessCode" class="form-input"
+                                placeholder="Código fornecido pelo professor">
+                            <div class="form-help">
+                                Código fornecido pelo professor para vincular ao aluno
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkbox-custom"></span>
+                                Concordo com os <a href="#" target="_blank">Termos de Uso</a> e <a href="#"
+                                    target="_blank">Política de Privacidade</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full">
+                            <span class="btn-text">Criar Conta</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Criando...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+
+                    <div class="signup-link">
+                        <p>Já tem uma conta? <a href="#" id="show-login">Entrar</a></p>
+                    </div>
+                </div>
+
+                <div class="login-info card">
+                    <div class="info-content">
+                        <div class="info-header">
+                            <i class="fas fa-heart info-icon"></i>
+                            <h2 class="section-title">Educação Inclusiva que Transforma</h2>
+                        </div>
+
+                        <div class="info-features">
+                            <div class="info-feature">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Gestão Simplificada</h4>
+                                    <p>Organize grupos e acompanhe o desenvolvimento de cada aluno</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Segurança Total</h4>
+                                    <p>Dados protegidos com criptografia e acesso controlado</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <i class="fas fa-universal-access"></i>
+                                <div>
+                                    <h4>100% Acessível</h4>
+                                    <p>Interface otimizada para todos os usuários</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-stats">
+                            <div class="stat">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Professores</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">2000+</div>
+                                <div class="stat-label">Alunos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Escolas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Script específico para a página de login
+        document.addEventListener('DOMContentLoaded', function () {
+            // Elementos do DOM
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const loginContainer = document.querySelector('.login-form-container');
+            const signupContainer = document.getElementById('signup-form-container');
+            const showSignupLink = document.getElementById('show-signup');
+            const showLoginLink = document.getElementById('show-login');
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            const userTypeBtns = document.querySelectorAll('.user-type-btn');
+            const accessCodeGroup = document.getElementById('access-code-group');
+
+            // Alternar entre formulários de login e cadastro
+            showSignupLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            });
+
+            showLoginLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                signupContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+            });
+
+            // Alternar visibilidade da senha
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const input = this.parentElement.querySelector('input');
+                    const icon = this.querySelector('i');
+
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.className = 'fas fa-eye-slash';
+                        this.setAttribute('aria-label', 'Ocultar senha');
+                    } else {
+                        input.type = 'password';
+                        icon.className = 'fas fa-eye';
+                        this.setAttribute('aria-label', 'Mostrar senha');
+                    }
+                });
+            });
+
+            // Seleção do tipo de usuário
+            userTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    userTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    if (this.dataset.type === 'family') {
+                        accessCodeGroup.style.display = 'block';
+                    } else {
+                        accessCodeGroup.style.display = 'none';
+                    }
+                });
+            });
+
+            // Validação de formulário
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // Simulação de login bem-sucedido
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                    btnText.style.display = 'none';
+                    btnLoading.style.display = 'inline-flex';
+
+                    setTimeout(() => {
+                        // Redirecionar após login bem-sucedido
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                });
+            }
+
+            if (signupForm) {
+                signupForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // Simulação de cadastro bem-sucedido
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                    btnText.style.display = 'none';
+                    btnLoading.style.display = 'inline-flex';
+
+                    setTimeout(() => {
+                        alert('Conta criada com sucesso! Faça login para continuar.');
+                        signupContainer.style.display = 'none';
+                        loginContainer.style.display = 'block';
+                        btnText.style.display = 'inline';
+                        btnLoading.style.display = 'none';
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

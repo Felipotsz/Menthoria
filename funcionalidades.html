@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default" data-theme-mode="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades - Menthoria</title>
+    <meta name="description"
+        content="Conheça todas as funcionalidades da plataforma Menthoria para educação inclusiva">
+    <meta name="author" content="Menthoria">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&family=Comfortaa:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Home/style.css">
+    <link rel="stylesheet" href="Funcionalidades/funcionalidades.css">
+
+    <!-- JavaScript -->
+    <script src="Home/script.js" defer></script>
+    <script src="Funcionalidades/funcionalidades.js" defer></script>
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/menthoria-fav-icon.png">
+</head>
+
+<body>
+    <!-- Botão flutuante para acessibilidade -->
+    <button id="toggle-acessibilidade" class="acessibilidade-toggle" aria-label="Abrir menu de acessibilidade">
+        <i class="fas fa-universal-access"></i>
+    </button>
+
+    <!-- Aside de Acessibilidade -->
+    <aside id="aside-acessibilidade" class="aside-acessibilidade" aria-hidden="true">
+        <div class="aside-header">
+            <h3>Configurações de Acessibilidade</h3>
+            <button id="fechar-acessibilidade" class="fechar-aside" aria-label="Fechar menu de acessibilidade">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="aside-content">
+            <div class="acessibilidade-grupo">
+                <h4>Tamanho da Fonte</h4>
+                <div class="botoes-fonte">
+                    <button id="aumentar-fonte" class="botao-acessibilidade" aria-label="Aumentar tamanho da fonte">
+                        <i class="fas fa-plus"></i>
+                        <span>A+</span>
+                    </button>
+                    <button id="diminuir-fonte" class="botao-acessibilidade" aria-label="Diminuir tamanho da fonte">
+                        <i class="fas fa-minus"></i>
+                        <span>A-</span>
+                    </button>
+                    <button id="resetar-fonte" class="botao-acessibilidade" aria-label="Resetar tamanho da fonte">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Contraste</h4>
+                <button id="alternar-contraste" class="botao-acessibilidade" aria-label="Alternar alto contraste">
+                    <i class="fas fa-adjust"></i>
+                    <span>Alto Contraste</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Tema</h4>
+                <button id="alternar-daltonico" class="botao-acessibilidade" aria-label="Alternar tema para daltônicos">
+                    <i class="fas fa-eye"></i>
+                    <span>Modo Daltônico</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Leitura</h4>
+                <button id="ativar-leitor" class="botao-acessibilidade" aria-label="Ativar leitor de tela">
+                    <i class="fas fa-assistive-listening-systems"></i>
+                    <span>Leitor de Tela</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Navegação</h4>
+                <button id="atalhos-teclado" class="botao-acessibilidade" aria-label="Ver atalhos de teclado">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Atalhos</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div id="overlay-acessibilidade" class="overlay-aside"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>Menthoria</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="funcionalidades.html" class="nav-link active">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#sobre" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contato" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <a href="login.html" class="btn-primary">
+                        <span>Entrar</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="funcionalidades-page">
+        <!-- Seção Hero Funcionalidades -->
+        <section class="hero-funcionalidades">
+            <div class="container">
+                <div class="hero-funcionalidades-content">
+                    <h1 class="hero-funcionalidades-title">
+                        <span class="font-special hero-accent">Funcionalidades</span> Completas
+                    </h1>
+                    <p class="hero-funcionalidades-description">
+                        Descubra todas as ferramentas que tornam o Menthoria a plataforma ideal para educação inclusiva
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros de Funcionalidades -->
+        <section class="filtros-funcionalidades">
+            <div class="container">
+                <div class="filtros-content">
+                    <h2 class="filtros-title">Filtrar por Categoria</h2>
+                    <div class="filtros-buttons">
+                        <button class="filtro-btn active" data-categoria="todas">Todas</button>
+                        <button class="filtro-btn" data-categoria="gestao">Gestão</button>
+                        <button class="filtro-btn" data-categoria="acompanhamento">Acompanhamento</button>
+                        <button class="filtro-btn" data-categoria="acessibilidade">Acessibilidade</button>
+                        <button class="filtro-btn" data-categoria="relatorios">Relatórios</button>
+                        <button class="filtro-btn" data-categoria="compartilhamento">Compartilhamento</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Funcionalidades -->
+        <section class="funcionalidades-grid-section">
+            <div class="container">
+                <div class="funcionalidades-grid" id="funcionalidades-grid">
+                    <!-- Gestão de Grupos -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="gestao">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Gestão de Grupos</h3>
+                                <span class="funcionalidade-type">Organização</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Organize alunos por turmas e escolas de forma intuitiva,
+                                facilitando o acompanhamento individualizado.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Criação de turmas e grupos</li>
+                                <li>Organização por escola</li>
+                                <li>Perfis individuais de alunos</li>
+                                <li>Filtros por características</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="gestao-grupos">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Relatórios Detalhados -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="relatorios">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Relatórios Detalhados</h3>
+                                <span class="funcionalidade-type">Documentação</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Crie relatórios de progresso completos com texto, fotos e anexos,
+                                documentando cada conquista do aluno.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Modelos personalizáveis</li>
+                                <li>Inclusão de mídia</li>
+                                <li>Marcadores de progresso</li>
+                                <li>Exportação em PDF</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="relatorios-detalhados">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Acesso Seguro para Famílias -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="compartilhamento">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Acesso Seguro para Famílias</h3>
+                                <span class="funcionalidade-type">Segurança</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Famílias podem acompanhar o progresso de seus filhos através
+                                de acesso controlado e seguro.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Portal familiar dedicado</li>
+                                <li>Controle de permissões</li>
+                                <li>Comunicação segura</li>
+                                <li>Notificações em tempo real</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="acesso-familias">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 100% Acessível -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="acessibilidade">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-universal-access"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">100% Acessível</h3>
+                                <span class="funcionalidade-type">Inclusão</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Interface otimizada para leitores de tela, alto contraste e
+                                navegação por teclado, garantindo acesso universal.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Compatível com leitores de tela</li>
+                                <li>Modo alto contraste</li>
+                                <li>Navegação por teclado</li>
+                                <li>Texto aumentável</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="acessibilidade-total">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Galeria de Momentos -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="acompanhamento">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Galeria de Momentos</h3>
+                                <span class="funcionalidade-type">Memória</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Capture e organize fotos das atividades e conquistas dos alunos,
+                                criando um portfólio visual do desenvolvimento.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Upload de fotos e vídeos</li>
+                                <li>Organização por data/aluno</li>
+                                <li>Compartilhamento controlado</li>
+                                <li>Marcadores de progresso</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="galeria-momentos">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Exportação de Dados -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="compartilhamento">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Exportação de Dados</h3>
+                                <span class="funcionalidade-type">Compartilhamento</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Exporte relatórios completos em PDF para compartilhar com equipes
+                                multidisciplinares e famílias.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Formato PDF personalizável</li>
+                                <li>Dados estruturados</li>
+                                <li>Múltiplos idiomas</li>
+                                <li>Compartilhamento seguro</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="exportacao-dados">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Planejamento de Aulas -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="gestao">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Planejamento de Aulas</h3>
+                                <span class="funcionalidade-type">Organização</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Crie e organize planos de aula adaptados para educação inclusiva,
+                                com recursos específicos para diferentes necessidades.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Modelos de planos de aula</li>
+                                <li>Adaptações por necessidade</li>
+                                <li>Recursos multimídia</li>
+                                <li>Calendário integrado</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="planejamento-aulas">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Avaliações Personalizadas -->
+                    <div class="funcionalidade-card card card-hover" data-categoria="acompanhamento">
+                        <div class="funcionalidade-header">
+                            <div class="funcionalidade-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="funcionalidade-info">
+                                <h3 class="funcionalidade-name">Avaliações Personalizadas</h3>
+                                <span class="funcionalidade-type">Acompanhamento</span>
+                            </div>
+                        </div>
+                        <div class="funcionalidade-details">
+                            <p class="funcionalidade-description">
+                                Crie avaliações adaptadas às necessidades específicas de cada aluno,
+                                com métricas de progresso detalhadas.
+                            </p>
+                            <ul class="funcionalidade-lista">
+                                <li>Modelos de avaliação</li>
+                                <li>Métricas personalizáveis</li>
+                                <li>Gráficos de progresso</li>
+                                <li>Comparação temporal</li>
+                            </ul>
+                        </div>
+                        <div class="funcionalidade-footer">
+                            <button class="btn-outline btn-detalhes" data-funcionalidade="avaliacoes-personalizadas">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="funcionalidades-empty" id="funcionalidades-empty" style="display: none;">
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhuma funcionalidade encontrada</h3>
+                        <p>Tente selecionar outra categoria ou limpar os filtros</p>
+                        <button class="btn-primary" id="limpar-filtros">Limpar Filtros</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal de Detalhes -->
+        <div id="modal-detalhes" class="modal" aria-hidden="true">
+            <div class="modal-overlay"></div>
+            <div class="modal-content card">
+                <div class="modal-header">
+                    <h2 id="modal-titulo">Detalhes da Funcionalidade</h2>
+                    <button class="modal-close" id="modal-fechar" aria-label="Fechar modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-corpo">
+                    <!-- Conteúdo será preenchido via JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Chamada para Ação -->
+        <section class="section chamada-acao section-education-notes">
+            <div class="container">
+                <!-- Elementos decorativos educacionais -->
+                <div class="education-note education-note-1">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="education-note education-note-4">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+
+                <div class="chamada-content">
+                    <h2 class="chamada-title">Pronto para Experimentar Todas as Funcionalidades?</h2>
+                    <p class="chamada-description">
+                        Junte-se a centenas de educadores que já estão usando o Menthoria
+                        para criar experiências de aprendizagem mais inclusivas e eficazes.
+                    </p>
+                    <div class="chamada-buttons">
+                        <a href="login.html" class="btn-primary">
+                            Começar Gratuitamente
+                        </a>
+                        <a href="index.html#contato" class="btn-outline">
+                            Falar com Especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer section-education-notes">
+        <div class="container">
+            <!-- Elementos decorativos educacionais -->
+            <div class="education-note education-note-1">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="education-note education-note-4">
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Menthoria</h3>
+                    <p>Transformando a educação inclusiva através da tecnologia acessível.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Menthoria. Todos os direitos reservados.</p>
+                <div class="footer-divider"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

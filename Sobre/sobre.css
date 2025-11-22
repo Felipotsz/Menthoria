@@ -1,0 +1,632 @@
+/* Estilos específicos para a página sobre */
+.sobre-page {
+    min-height: 100vh;
+    padding-top: 80px;
+    background: hsl(var(--background));
+}
+
+/* Hero Sobre */
+.hero-sobre {
+    background: linear-gradient(135deg, 
+        hsla(var(--primary) / 0.08) 0%, 
+        hsla(var(--primary) / 0.02) 100%);
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-sobre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, 
+            hsla(var(--primary) / 0.05) 0%, 
+            transparent 70%);
+    z-index: 1;
+}
+
+.hero-sobre-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-sobre-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-sobre-description {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Nossa História */
+.nossa-historia {
+    padding: 5rem 0;
+}
+
+.historia-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.historia-text h2 {
+    margin-bottom: 2.5rem;
+}
+
+.historia-timeline {
+    position: relative;
+}
+
+.historia-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: hsl(var(--primary));
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 80px;
+}
+
+.timeline-year {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.timeline-content h3 {
+    margin-bottom: 0.5rem;
+    color: hsl(var(--primary));
+}
+
+.timeline-content p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+}
+
+.historia-image .image-container {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+.historia-image .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.historia-image .image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Missão, Visão e Valores */
+.missao-visao-valores {
+    padding: 5rem 0;
+    background: hsl(var(--muted));
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.mvv-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    transition: var(--transition-smooth);
+}
+
+.mvv-icon {
+    width: 80px;
+    height: 80px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+}
+
+.mvv-card h3 {
+    margin-bottom: 1rem;
+    color: hsl(var(--primary));
+}
+
+.mvv-card p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+}
+
+.valores-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.valores-lista li {
+    padding: 0.5rem 0;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.5;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.valores-lista li:last-child {
+    border-bottom: none;
+}
+
+.valores-lista strong {
+    color: hsl(var(--foreground));
+}
+
+/* Números que Inspiram */
+.numeros-inspiradores {
+    padding: 5rem 0;
+}
+
+.numeros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.numero-card {
+    text-align: center;
+    padding: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.numero-icon {
+    width: 60px;
+    height: 60px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.numero-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: hsl(var(--primary));
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.numero-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+}
+
+.numero-card p {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Por que Escolher o Menthoria */
+.porque-escolher {
+    padding: 5rem 0;
+    background: hsl(var(--muted));
+}
+
+.vantagens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.vantagem-card {
+    text-align: center;
+    padding: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.vantagem-icon {
+    width: 70px;
+    height: 70px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.75rem;
+}
+
+.vantagem-card h3 {
+    margin-bottom: 1rem;
+    color: hsl(var(--primary));
+}
+
+.vantagem-card p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+}
+
+/* Depoimentos */
+.depoimentos {
+    padding: 5rem 0;
+}
+
+.depoimentos-carrossel {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.depoimentos-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 2rem;
+}
+
+.depoimento-card {
+    min-width: 100%;
+    padding: 2rem;
+}
+
+.depoimento-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.depoimento-text {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.depoimento-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+    font-style: italic;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.depoimento-text p::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -1rem;
+    font-size: 4rem;
+    color: hsl(var(--primary));
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.autor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.autor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.autor-info h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.autor-info p {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.autor-avaliacao {
+    color: #FFD700;
+}
+
+.carrossel-controles {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.carrossel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--primary));
+    background: transparent;
+    color: hsl(var(--primary));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.carrossel-btn:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+/* FAQ */
+.faq-section {
+    padding: 5rem 0;
+    background: hsl(var(--muted));
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-pergunta {
+    width: 100%;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.faq-pergunta:hover {
+    background: hsla(var(--primary) / 0.05);
+}
+
+.faq-pergunta[aria-expanded="true"] {
+    background: hsla(var(--primary) / 0.1);
+}
+
+.faq-pergunta[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.faq-pergunta i {
+    transition: transform 0.3s ease;
+    color: hsl(var(--primary));
+}
+
+.faq-resposta {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-resposta[aria-hidden="false"] {
+    padding: 0 1.5rem 1.5rem;
+    max-height: 500px;
+}
+
+.faq-resposta p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Animações */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.numero-value.animated {
+    animation: countUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item,
+.mvv-card,
+.vantagem-card,
+.depoimento-card,
+.faq-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .historia-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .mvv-grid,
+    .numeros-grid,
+    .vantagens-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .historia-timeline::before {
+        left: 25px;
+    }
+    
+    .timeline-item {
+        padding-left: 70px;
+    }
+    
+    .timeline-year {
+        width: 50px;
+        height: 50px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre-page {
+        padding-top: 70px;
+    }
+    
+    .hero-sobre {
+        padding: 3rem 0;
+    }
+    
+    .hero-sobre-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-sobre-description {
+        font-size: 1.1rem;
+    }
+    
+    .nossa-historia,
+    .missao-visao-valores,
+    .numeros-inspiradores,
+    .porque-escolher,
+    .depoimentos,
+    .faq-section {
+        padding: 3rem 0;
+    }
+    
+    .mvv-grid,
+    .numeros-grid,
+    .vantagens-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .historia-timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 60px;
+        margin-bottom: 2rem;
+    }
+    
+    .timeline-year {
+        width: 40px;
+        height: 40px;
+        font-size: 0.7rem;
+    }
+    
+    .depoimento-autor {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .autor-info {
+        text-align: center;
+    }
+    
+    .faq-pergunta {
+        padding: 1.25rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-sobre-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .numero-value {
+        font-size: 2.5rem;
+    }
+    
+    .mvv-card,
+    .vantagem-card {
+        padding: 1.5rem;
+    }
+    
+    .depoimento-card {
+        padding: 1.5rem;
+    }
+    
+    .depoimento-text p {
+        padding-left: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .depoimento-text p::before {
+        font-size: 3rem;
+        top: -0.5rem;
+    }
+}

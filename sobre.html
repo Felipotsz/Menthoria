@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default" data-theme-mode="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Menthoria - Educação Inclusiva</title>
+    <meta name="description"
+        content="Conheça a história, missão e valores do Menthoria - Plataforma de educação inclusiva">
+    <meta name="author" content="Menthoria">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&family=Comfortaa:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Home/style.css">
+    <link rel="stylesheet" href="Sobre/sobre.css">
+
+    <!-- JavaScript -->
+    <script src="Home/script.js" defer></script>
+    <script src="Sobre/sobre.js" defer></script>
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/menthoria-fav-icon.png">
+</head>
+
+<body>
+    <!-- Botão flutuante para acessibilidade -->
+    <button id="toggle-acessibilidade" class="acessibilidade-toggle" aria-label="Abrir menu de acessibilidade">
+        <i class="fas fa-universal-access"></i>
+    </button>
+
+    <!-- Aside de Acessibilidade -->
+    <aside id="aside-acessibilidade" class="aside-acessibilidade" aria-hidden="true">
+        <div class="aside-header">
+            <h3>Configurações de Acessibilidade</h3>
+            <button id="fechar-acessibilidade" class="fechar-aside" aria-label="Fechar menu de acessibilidade">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="aside-content">
+            <div class="acessibilidade-grupo">
+                <h4>Tamanho da Fonte</h4>
+                <div class="botoes-fonte">
+                    <button id="aumentar-fonte" class="botao-acessibilidade" aria-label="Aumentar tamanho da fonte">
+                        <i class="fas fa-plus"></i>
+                        <span>A+</span>
+                    </button>
+                    <button id="diminuir-fonte" class="botao-acessibilidade" aria-label="Diminuir tamanho da fonte">
+                        <i class="fas fa-minus"></i>
+                        <span>A-</span>
+                    </button>
+                    <button id="resetar-fonte" class="botao-acessibilidade" aria-label="Resetar tamanho da fonte">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Contraste</h4>
+                <button id="alternar-contraste" class="botao-acessibilidade" aria-label="Alternar alto contraste">
+                    <i class="fas fa-adjust"></i>
+                    <span>Alto Contraste</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Tema</h4>
+                <button id="alternar-daltonico" class="botao-acessibilidade" aria-label="Alternar tema para daltônicos">
+                    <i class="fas fa-eye"></i>
+                    <span>Modo Daltônico</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Leitura</h4>
+                <button id="ativar-leitor" class="botao-acessibilidade" aria-label="Ativar leitor de tela">
+                    <i class="fas fa-assistive-listening-systems"></i>
+                    <span>Leitor de Tela</span>
+                </button>
+            </div>
+
+            <div class="acessibilidade-grupo">
+                <h4>Navegação</h4>
+                <button id="atalhos-teclado" class="botao-acessibilidade" aria-label="Ver atalhos de teclado">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Atalhos</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div id="overlay-acessibilidade" class="overlay-aside"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>Menthoria</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="funcionalidades.html" class="nav-link">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sobre.html" class="nav-link active">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contato.html" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <a href="login.html" class="btn-outline">Entrar</a>
+                    <a href="login.html" class="btn-primary" data-short="Começar">
+                        <span>Começar</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="sobre-page">
+        <!-- Seção Hero Sobre -->
+        <section class="hero-sobre">
+            <div class="container">
+                <div class="hero-sobre-content">
+                    <h1 class="hero-sobre-title">
+                        Sobre o <span class="font-special hero-accent">Menthoria</span>
+                    </h1>
+                    <p class="hero-sobre-description">
+                        Conheça nossa missão, nossa história e os valores que nos guiam na transformação da educação
+                        inclusiva
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nossa História -->
+        <section class="nossa-historia section-education-notes">
+            <div class="container">
+                <div class="historia-content">
+                    <div class="historia-text">
+                        <h2 class="section-title">Nossa <span class="font-special section-accent">História</span></h2>
+                        <div class="historia-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-content">
+                                    <h3>O Início</h3>
+                                    <p>O Menthoria nasceu da observação das dificuldades enfrentadas por educadores no
+                                        acompanhamento de alunos com necessidades especiais. Percebemos a necessidade de
+                                        uma ferramenta que realmente atendesse às demandas específicas da educação
+                                        inclusiva.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-content">
+                                    <h3>Desenvolvimento e Validação</h3>
+                                    <p>Desenvolvemos a plataforma em colaboração com educadores, psicólogos e famílias,
+                                        garantindo que cada funcionalidade atendesse às reais necessidades do contexto
+                                        educacional inclusivo.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-content">
+                                    <h3>Lançamento e Crescimento</h3>
+                                    <p>Lançamos oficialmente o Menthoria, alcançando rapidamente centenas de educadores
+                                        e milhares de alunos, transformando a prática educativa em todo o país.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="historia-image">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                                alt="Equipe do Menthoria trabalhando em colaboração" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Missão, Visão e Valores -->
+        <section class="missao-visao-valores">
+            <div class="container">
+                <div class="mvv-grid">
+                    <!-- Missão -->
+                    <div class="mvv-card card card-hover">
+                        <div class="mvv-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Missão</h3>
+                        <p>Democratizar o acesso à educação de qualidade através de tecnologia acessível, capacitando
+                            educadores e famílias no acompanhamento do desenvolvimento de alunos com deficiência.</p>
+                    </div>
+
+                    <!-- Visão -->
+                    <div class="mvv-card card card-hover">
+                        <div class="mvv-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Visão</h3>
+                        <p>Ser a plataforma de referência em educação inclusiva na América Latina, transformando a
+                            maneira como educadores e famílias acompanham e promovem o desenvolvimento educacional.</p>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="mvv-card card card-hover">
+                        <div class="mvv-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Valores</h3>
+                        <ul class="valores-lista">
+                            <li><strong>Inclusão:</strong> Acreditamos na educação para todos</li>
+                            <li><strong>Inovação:</strong> Buscamos sempre as melhores soluções</li>
+                            <li><strong>Ética:</strong> Agimos com transparência e respeito</li>
+                            <li><strong>Colaboração:</strong> Trabalhamos em parceria</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Números que Inspiram -->
+        <section class="numeros-inspiradores section-education-notes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Números que <span class="font-special section-accent">Inspiram</span></h2>
+                    <p class="section-description">
+                        O impacto do Menthoria na educação inclusiva brasileira
+                    </p>
+                </div>
+
+                <div class="numeros-grid">
+                    <div class="numero-card card">
+                        <div class="numero-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="numero-value" data-count="500">0</div>
+                        <div class="numero-label">Professores</div>
+                        <p>Impactando positivamente a prática educativa</p>
+                    </div>
+
+                    <div class="numero-card card">
+                        <div class="numero-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="numero-value" data-count="2000">0</div>
+                        <div class="numero-label">Alunos</div>
+                        <p>Com desenvolvimento acompanhado de perto</p>
+                    </div>
+
+                    <div class="numero-card card">
+                        <div class="numero-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="numero-value" data-count="50">0</div>
+                        <div class="numero-label">Escolas</div>
+                        <p>Transformando sua abordagem inclusiva</p>
+                    </div>
+
+                    <div class="numero-card card">
+                        <div class="numero-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="numero-value" data-count="85">0</div>
+                        <div class="numero-label">% de Satisfação</div>
+                        <p>Entre educadores que usam a plataforma</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por que Escolher o Menthoria -->
+        <section class="porque-escolher">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Por que Escolher o <span
+                            class="font-special section-accent">Menthoria</span></h2>
+                    <p class="section-description">
+                        Descubra o que nos torna diferentes no mercado de educação inclusiva
+                    </p>
+                </div>
+
+                <div class="vantagens-grid">
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-universal-access"></i>
+                        </div>
+                        <h3>100% Acessível</h3>
+                        <p>Desenvolvido com as melhores práticas de acessibilidade desde o primeiro dia, garantindo que
+                            todos possam usar nossa plataforma.</p>
+                    </div>
+
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Segurança em Primeiro Lugar</h3>
+                        <p>Protegemos os dados dos alunos com criptografia de ponta a ponta e seguimos rigorosos
+                            protocolos de privacidade.</p>
+                    </div>
+
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Feito por Especialistas</h3>
+                        <p>Desenvolvido em colaboração com educadores, psicólogos e terapeutas especializados em
+                            educação inclusiva.</p>
+                    </div>
+
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Inovação Constante</h3>
+                        <p>Estamos sempre evoluindo com base no feedback dos usuários e nas últimas pesquisas em
+                            educação inclusiva.</p>
+                    </div>
+
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Suporte Dedicado</h3>
+                        <p>Nossa equipe de suporte especializada está sempre disponível para ajudar educadores e
+                            famílias.</p>
+                    </div>
+
+                    <div class="vantagem-card card card-hover">
+                        <div class="vantagem-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Multiplataforma</h3>
+                        <p>Acesse de qualquer dispositivo - computador, tablet ou smartphone - com experiência otimizada
+                            para cada um.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="depoimentos section-education-notes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">O que Dizem <span class="font-special section-accent">Nossos
+                            Usuários</span></h2>
+                    <p class="section-description">
+                        Experiências reais de educadores e famílias que transformaram sua prática com o Menthoria
+                    </p>
+                </div>
+
+                <div class="depoimentos-carrossel">
+                    <div class="depoimentos-track" id="depoimentos-track">
+                        <!-- Depoimento 1 -->
+                        <div class="depoimento-card card">
+                            <div class="depoimento-content">
+                                <div class="depoimento-text">
+                                    <p>"O Menthoria revolucionou minha forma de acompanhar o desenvolvimento dos meus
+                                        alunos. A plataforma é intuitiva e realmente atende às necessidades da educação
+                                        inclusiva."</p>
+                                </div>
+                                <div class="depoimento-autor">
+                                    <div class="autor-avatar">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                            alt="Professora Maria Silva" loading="lazy">
+                                    </div>
+                                    <div class="autor-info">
+                                        <h4>Maria Silva</h4>
+                                        <p>Professora de Educação Especial</p>
+                                        <div class="autor-avaliacao">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Depoimento 2 -->
+                        <div class="depoimento-card card">
+                            <div class="depoimento-content">
+                                <div class="depoimento-text">
+                                    <p>"Como mãe de uma criança com autismo, finalmente encontrei uma plataforma que me
+                                        permite acompanhar de perto o progresso do meu filho e me comunicar facilmente
+                                        com seus professores."</p>
+                                </div>
+                                <div class="depoimento-autor">
+                                    <div class="autor-avatar">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                            alt="Ana Oliveira, mãe" loading="lazy">
+                                    </div>
+                                    <div class="autor-info">
+                                        <h4>Ana Oliveira</h4>
+                                        <p>Mãe e Usuária</p>
+                                        <div class="autor-avaliacao">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Depoimento 3 -->
+                        <div class="depoimento-card card">
+                            <div class="depoimento-content">
+                                <div class="depoimento-text">
+                                    <p>"A ferramenta de relatórios me poupa horas de trabalho burocrático. Agora posso
+                                        me dedicar mais ao que realmente importa: o acompanhamento personalizado de cada
+                                        aluno."</p>
+                                </div>
+                                <div class="depoimento-autor">
+                                    <div class="autor-avatar">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                            alt="Professor Carlos Santos" loading="lazy">
+                                    </div>
+                                    <div class="autor-info">
+                                        <h4>Carlos Santos</h4>
+                                        <p>Coordenador Pedagógico</p>
+                                        <div class="autor-avaliacao">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carrossel-controles">
+                        <button class="carrossel-btn carrossel-prev" aria-label="Depoimento anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carrossel-btn carrossel-next" aria-label="Próximo depoimento">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Perguntas <span class="font-special section-accent">Frequentes</span></h2>
+                    <p class="section-description">
+                        Tire suas dúvidas sobre o Menthoria e como podemos ajudar na educação inclusiva
+                    </p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item card">
+                        <button class="faq-pergunta" aria-expanded="false">
+                            <span>O Menthoria é gratuito?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-resposta" aria-hidden="true">
+                            <p>Sim! Oferecemos uma versão gratuita com funcionalidades essenciais para educadores
+                                individuais. Para escolas e instituições, temos planos premium com recursos avançados e
+                                suporte dedicado.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item card">
+                        <button class="faq-pergunta" aria-expanded="false">
+                            <span>Como é garantida a segurança dos dados?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-resposta" aria-hidden="true">
+                            <p>Utilizamos criptografia de ponta a ponta, servidores seguros no Brasil e seguimos
+                                rigorosamente a LGPD. Os dados dos alunos são anonimizados e apenas pessoas autorizadas
+                                têm acesso às informações.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item card">
+                        <button class="faq-pergunta" aria-expanded="false">
+                            <span>Preciso de treinamento para usar a plataforma?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-resposta" aria-hidden="true">
+                            <p>Não! Desenvolvemos o Menthoria para ser intuitivo. Oferecemos tutoriais interativos e
+                                suporte online para ajudar no início. A maioria dos usuários se adapta em poucos dias.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item card">
+                        <button class="faq-pergunta" aria-expanded="false">
+                            <span>Posso usar em dispositivos móveis?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-resposta" aria-hidden="true">
+                            <p>Sim! O Menthoria é totalmente responsivo e funciona perfeitamente em smartphones e
+                                tablets. Também oferecemos aplicativos nativos para iOS e Android.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item card">
+                        <button class="faq-pergunta" aria-expanded="false">
+                            <span>Como as famílias podem acessar a plataforma?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-resposta" aria-hidden="true">
+                            <p>As famílias recebem um acesso seguro e controlado através de um portal específico, onde
+                                podem acompanhar o progresso dos alunos e se comunicar com os educadores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Chamada para Ação -->
+        <section class="section chamada-acao section-education-notes">
+            <div class="container">
+                <!-- Elementos decorativos educacionais -->
+                <div class="education-note education-note-1">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="education-note education-note-4">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+
+                <div class="chamada-content">
+                    <h2 class="chamada-title">Pronto para Fazer Parte Dessa Transformação?</h2>
+                    <p class="chamada-description">
+                        Junte-se à comunidade Menthoria e descubra como podemos juntos transformar a educação inclusiva
+                    </p>
+                    <div class="chamada-buttons">
+                        <a href="login.html" class="btn-primary">
+                            Começar Gratuitamente
+                        </a>
+                        <a href="index.html#contato" class="btn-outline">
+                            Falar com Especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer section-education-notes">
+        <div class="container">
+            <!-- Elementos decorativos educacionais -->
+            <div class="education-note education-note-1">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="education-note education-note-4">
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Menthoria</h3>
+                    <p>Transformando a educação inclusiva através da tecnologia acessível.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Menthoria. Todos os direitos reservados.</p>
+                <div class="footer-divider"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
